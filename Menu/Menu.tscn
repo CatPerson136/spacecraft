@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cucoqgarshncg"]
+
+[ext_resource type="Script" path="res://Menu/Menu.gd" id="1_fe18f"]
+
+[sub_resource type="Theme" id="Theme_7y3as"]
+default_font_size = 120
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fe18f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1925.0
+offset_bottom = 1070.0
+color = Color(0, 0, 0, 1)
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 407.0
+offset_right = 382.0
+offset_bottom = 543.0
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 594.0
+offset_right = 381.0
+offset_bottom = 730.0
+text = "Quit
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 72.0
+offset_right = 1605.0
+offset_bottom = 322.0
+theme = SubResource("Theme_7y3as")
+text = "		Spacecraft"
+fit_content = true
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

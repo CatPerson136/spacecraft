@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7bkbcwvus5q0"]
+
+[ext_resource type="Texture2D" uid="uid://d1itfd3kusbkj" path="res://Spacceship/cubemap.png" id="1_rgnof"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y5rmo"]
+panorama = ExtResource("1_rgnof")
+
+[sub_resource type="Sky" id="Sky_7gpqt"]
+sky_material = SubResource("PanoramaSkyMaterial_y5rmo")
+
+[sub_resource type="Environment" id="Environment_n7a3m"]
+background_mode = 2
+sky = SubResource("Sky_7gpqt")
+
+[sub_resource type="BoxMesh" id="BoxMesh_jje66"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rw2dy"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7a3m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(9, 0, 0, 0, 1, 0, 0, 0, 6.12, 0, 0, 0)
+mesh = SubResource("BoxMesh_jje66")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_rw2dy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 5, 3, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-2.58096e-08, -0.5, 0.866025, -1.49012e-08, 0.866025, 0.5, -1, 0, -2.98023e-08, 5, 3, 0)
