@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7bkbcwvus5q0"]
+[gd_scene load_steps=8 format=3 uid="uid://caav2x74hbbj6"]
 
 [ext_resource type="Texture2D" uid="uid://d1itfd3kusbkj" path="res://Spacceship/cubemap.png" id="1_rgnof"]
+[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://Player/player.tscn" id="3_7ly86"]
+[ext_resource type="PackedScene" uid="uid://bb3armnn8q4nl" path="res://Spacceship/c.tscn" id="4_8fyeb"]
+[ext_resource type="PackedScene" uid="uid://btdlfjfp5kcul" path="res://Spacceship/node_3d.tscn" id="4_xe3b0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y5rmo"]
 panorama = ExtResource("1_rgnof")
@@ -12,27 +15,24 @@ sky_material = SubResource("PanoramaSkyMaterial_y5rmo")
 background_mode = 2
 sky = SubResource("Sky_7gpqt")
 
-[sub_resource type="BoxMesh" id="BoxMesh_jje66"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rw2dy"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n7a3m")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(9, 0, 0, 0, 1, 0, 0, 0, 6.12, 0, 0, 0)
-mesh = SubResource("BoxMesh_jje66")
+[node name="Node3D" parent="." instance=ExtResource("4_xe3b0")]
+transform = Transform3D(6.83365, 0, 0, 0, 6.48807, 1.71758, 0, -1.64921, 6.75704, 62.2276, 51.4532, 549.575)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_rw2dy")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 5, 3, 0)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7)
+light_energy = 16.0
+omni_range = 4096.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-2.58096e-08, -0.5, 0.866025, -1.49012e-08, 0.866025, 0.5, -1, 0, -2.98023e-08, 5, 3, 0)
+transform = Transform3D(0.840655, 0.416036, -0.346718, -0.25, 0.866025, 0.433014, 0.480415, -0.277336, 0.832037, 0, 0, 503)
+light_energy = 0.34
+
+[node name="Player" parent="." instance=ExtResource("3_7ly86")]
+
+[node name="c" parent="." instance=ExtResource("4_8fyeb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.09609)
