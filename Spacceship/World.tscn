@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://caav2x74hbbj6"]
+[gd_scene load_steps=9 format=3 uid="uid://caav2x74hbbj6"]
 
 [ext_resource type="Texture2D" uid="uid://d1itfd3kusbkj" path="res://Spacceship/cubemap.png" id="1_rgnof"]
-[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://Player/player.tscn" id="3_7ly86"]
+[ext_resource type="PackedScene" uid="uid://dfn3nm5smm42h" path="res://Player/player.tscn" id="3_7ly86"]
 [ext_resource type="PackedScene" uid="uid://bb3armnn8q4nl" path="res://Spacceship/c.tscn" id="4_8fyeb"]
 [ext_resource type="PackedScene" uid="uid://btdlfjfp5kcul" path="res://Spacceship/node_3d.tscn" id="4_xe3b0"]
 
@@ -15,10 +15,26 @@ sky_material = SubResource("PanoramaSkyMaterial_y5rmo")
 background_mode = 2
 sky = SubResource("Sky_7gpqt")
 
+[sub_resource type="GDScript" id="GDScript_nqv4w"]
+script/source = "extends WorldEnvironment
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+ 
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n7a3m")
+script = SubResource("GDScript_nqv4w")
 
 [node name="Node3D" parent="." instance=ExtResource("4_xe3b0")]
 transform = Transform3D(6.83365, 0, 0, 0, 6.48807, 1.71758, 0, -1.64921, 6.75704, 62.2276, 51.4532, 549.575)
@@ -32,7 +48,7 @@ omni_range = 4096.0
 transform = Transform3D(0.840655, 0.416036, -0.346718, -0.25, 0.866025, 0.433014, 0.480415, -0.277336, 0.832037, 0, 0, 503)
 light_energy = 0.34
 
-[node name="Player" parent="." instance=ExtResource("3_7ly86")]
-
 [node name="c" parent="." instance=ExtResource("4_8fyeb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.09609)
+
+[node name="player" parent="." instance=ExtResource("3_7ly86")]
